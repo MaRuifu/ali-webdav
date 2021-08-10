@@ -3,11 +3,24 @@
 基于此，你可以把阿里云盘挂载为Windows、Linux、Mac系统的磁盘，可以通过NAS系统做文件管理或文件同步，更多玩法等你挖掘
 
 
-## 代码运行
+## 环境准备
+
+ali-webdav 依赖 [Java](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) 环境来运行。如果您是从代码开始构建并运行Nacos，还需要为此配置 [Maven](https://maven.apache.org/index.html)环境，请确保是在以下版本环境中安装使用:
+
+1. 64 bit OS，支持 Linux/Unix/Mac/Windows，推荐选用 Linux/Unix/Mac。
+2. 64 bit JDK 1.8+；[下载](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) & [配置](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)。
+3. Maven 3.2.x+；[下载](https://maven.apache.org/download.cgi) & [配置](https://maven.apache.org/settings.html)。
+
+## 下载源码或者安装包
+
+你可以通过源码和发行包两种方式来获取 ali-webdav。
+
+## 下载源码
 
 ```
 # 代码下载 
 git clone  https://github.com/maruifu/ali-webdav.git
+cd ali-webdav/
 # 代码打包 
 mvn clean package -Dmaven.test.skip=true
 # 运行
@@ -22,6 +35,31 @@ java -jar ali-webdav-0.1.0.jar  --aliyundrive.refresh-token="12ecb25e6ef23f0baf6
 # aliyundrive.auth.password WebDav密码，默认admin 选填
 
 ```
+> 如果执行失败请创建该目录或者修改代码中目录   /usr/local/java/docker/ 为 ./
+
+### 下载编译后压缩包方式
+
+您可以从 [最新稳定版本](https://github.com/MaRuifu/ali-webdav/releases) 下载对应系统的 `ali-webdav-server-$version.zip` 包。
+
+
+```bash
+    #  使用前获取refresh-token值，教程查看https://github.com/MaRuifu/ali-webdav/blob/main/tutorial/getToken.md
+    # linux  或 mac 
+    1.unzip ali-webdav-$version.zip z
+    2.cd ali-webdav-server-0.1.0
+    # 修改start.sh 文件中的refresh_token
+    3.sh ./start.sh
+    # windows
+    1.解压ali-webdav-server-$version.zip 文件
+    2.修改refresh-token值
+    3.点击start.bat文件
+
+  
+```
+
+
+
+
 
 ## 容器运行
 ```bash
@@ -49,11 +87,9 @@ docker run -d --name=ali-webdav --restart=always -p 8888:8080  -v /etc/localtime
 ## Windows10
 TODO
 
-## Linux
+## Linux 或 Mac
 TODO
 
-## Mac
-TODO
 
 # 客户端兼容性
 | 客户端         | 下载 |    上传    |              备注              |
@@ -66,10 +102,8 @@ TODO
 
 
 # 浏览器获取refreshToken方式
-1. 先通过浏览器（建议chrome）打开阿里云盘官网并登录：https://www.aliyundrive.com/drive/
-2. 登录成功后，按F12打开开发者工具，点击Application，点击Local Storage，点击 Local Storage下的 [https://www.aliyundrive.com/](https://www.aliyundrive.com/)，点击右边的token，此时可以看到里面的数据，其中就有refresh_token，把其值复制出来即可。（格式为小写字母和数字，不要复制双引号。例子：ca6bf2175d73as2188efg81f87e55f11）
-3. 第二步有点繁琐，大家结合下面的截图就看懂了
- ![image](https://xiaomage.myds.me:10001/images/2021/08/10/119246278-e6760880-bbb2-11eb-877c-aca16cf75d89.png)
+
+**[点击我查看获取方式](./tutorial/getToken.md)**
 
 # 功能说明
 ## 支持的功能
