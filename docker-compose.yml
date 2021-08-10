@@ -1,0 +1,19 @@
+version: '0.0.1'
+services:
+  # https://github.com/maruifu/ali-webdav
+  webdav-aliyundriver:
+    image: xiaomageit/ali-webdav
+    container_name: ali-webdav
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /usr/local/java/docker/:/usr/local/java/docker/
+    ports:
+      - "8080:8080"
+    tty: true
+    environment:
+      - TZ=Asia/Shanghai
+      - ALIYUNDRIVE_REFRESH_TOKEN=<change me>
+      - ALIYUNDRIVE_AUTH_ENABLE=<change me>
+      - ALIYUNDRIVE_AUTH_USERNAME=<change me>
+      - ALIYUNDRIVE_AUTH_PASSWORD=<change me>
