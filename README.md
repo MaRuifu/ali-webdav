@@ -15,7 +15,7 @@ ali-webdav 依赖 [Java](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_
 
 你可以通过源码和发行包两种方式来获取 ali-webdav。
 
-## 下载源码
+###  下载源码
 
 ```
 # 代码下载 
@@ -53,13 +53,7 @@ java -jar ali-webdav-0.1.0.jar  --aliyundrive.refresh-token="12ecb25e6ef23f0baf6
     1.解压ali-webdav-server-$version.zip 文件
     2.修改refresh-token值
     3.点击start.bat文件
-
-  
 ```
-
-
-
-
 
 ## 容器运行
 ```bash
